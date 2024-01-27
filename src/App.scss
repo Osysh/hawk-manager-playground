@@ -1,0 +1,19 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 560px;
+  width: 350px;
+  background-color: white;
+  user-select: none;
+  box-shadow: 1px 1px 12px;
+
+  .Main {
+    flex-grow: 1;
+    margin: 12px;
+  }
+}
+
+.Reduced {
+  height: 68px !important;
+}

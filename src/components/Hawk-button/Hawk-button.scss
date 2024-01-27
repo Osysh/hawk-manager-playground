@@ -1,0 +1,64 @@
+@import '@elastic/eui/src/themes/amsterdam/colors_light';
+@import '@elastic/eui/src/themes/amsterdam/globals';
+
+$size: 180px;
+
+.Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: $size;
+  height: $size;
+  position: relative;
+  
+  .Button {
+    border-radius: 9999px;
+    padding: 12px; 
+    height: $size - 10px;
+    width: $size - 10px;
+  
+    background-color: #FFF;
+    box-shadow: 2px 2px 5px #69707d;
+  
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  .Button:hover {
+    box-shadow: 1px 1px 5px #69707d;
+  }
+  
+  .Hawk-picture {
+    height: 100%;
+  }
+  
+  .Loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+  
+    width: $size / 2;
+    height: $size;
+    border-top-left-radius: $size * 2;
+    border-bottom-left-radius: $size * 2;
+    background-image: linear-gradient(0deg, white, $euiColorPrimary);
+  }
+  
+  .rotate {
+    animation: 1s linear infinite rotate;
+    transform-origin: right;
+  }
+  
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+

@@ -1,0 +1,47 @@
+@import '@elastic/eui/src/themes/amsterdam/colors_light';
+@import '@elastic/eui/src/themes/amsterdam/globals';
+
+.Footer {
+  display: flex;
+  flex-grow: 0;
+  height: 80px;
+  border-top: solid 1px $euiColorMediumShade;
+  justify-content: space-between;
+  background-color: $euiColorLightShade;
+  gap: 1px;
+
+  .Status-loading {
+    font-size: 12px !important;
+  }
+  
+  .Menu-item {
+    display: flex;
+    justify-content: space-evenly;
+    text-decoration: none !important;
+    align-items: center;
+    flex: 1;
+    flex-direction: column;
+    color: #343741;
+    background-color: $euiColorLightestShade;
+  }
+  
+  .Menu-item:hover {
+    color: #343741 !important;
+    background-color: #c7c8ce;
+  }
+  
+  .Item-state {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .Spacer {
+    width: 10px;
+  }
+  
+  .isSelected {
+    background-color: $euiColorDarkestShade;
+    color: $euiColorLightestShade !important;
+  }
+}
