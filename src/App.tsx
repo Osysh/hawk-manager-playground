@@ -41,9 +41,9 @@ function App() {
   const renderRoutes = () => (
     <Routes>
       <Route path="/" element={<Main engineService={engineService} status={globalStatus} />} />
-      <Route path="/elasticsearch" element={<ConfigurationPage status={eStatus} module={'elasticsearch'} engineService={engineService} pageComponent={<ConfigurationElasticsearch configService={configService} />} />} />
-      <Route path="/kibana" element={<ConfigurationPage status={'on'} module={'kibana'} engineService={engineService} pageComponent={<ConfigurationKibana configService={configService} />} />} />
-      <Route path="/logstash" element={<ConfigurationPage status={'on'} module={'logstash'} engineService={engineService} pageComponent={<ConfigurationLogstash configService={configService} />} />} />
+      <Route path="/elasticsearch" element={<ConfigurationPage status={eStatus} configService={configService} module={'elasticsearch'} engineService={engineService} pageComponent={<ConfigurationElasticsearch configService={configService} status={eStatus} />} />} />
+      <Route path="/kibana" element={<ConfigurationPage status={kStatus} configService={configService} module={'kibana'} engineService={engineService} pageComponent={<ConfigurationKibana configService={configService} status={kStatus} />} />} />
+      <Route path="/logstash" element={<ConfigurationPage status={lStatus} configService={configService} module={'logstash'} engineService={engineService} pageComponent={<ConfigurationLogstash configService={configService} status={lStatus} />} />} />
     </Routes>
   );
 

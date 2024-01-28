@@ -15,7 +15,6 @@ export function Header({ onReduceWindow }: HeaderProps) {
   const [isMinimized, setIsMinimized] = useState<boolean>(false); 
 
   const location = useLocation();
-  console.log(location.pathname, location.pathname === '/')
 
   const onMinimise = () => {
     setIsMinimized(isMinimized => !isMinimized);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   EuiForm,
   EuiFormRow,
@@ -8,14 +8,21 @@ import {
 import './Configuration-logstash.scss';
 import { ConfigService } from '../../../services/ConfigService';
 import { _SingleRangeChangeEvent } from '@elastic/eui/src/components/form/range/types';
+import { Status } from '../../../types';
 
 interface ConfigurationLogstashProps {
-  configService: ConfigService
+  configService: ConfigService;
+  status: Status
 }
 
-export function ConfigurationLogstash({ configService }: ConfigurationLogstashProps) {
-  const onJvmSizeChange = (e: _SingleRangeChangeEvent) => {
-    configService.params.logstash.workers = parseInt(e.currentTarget.value, 10);
+export function ConfigurationLogstash({ configService, status }: ConfigurationLogstashProps) {
+  const [workers, setWorkers] = useState<number>(configService.params.logstash.workers);
+
+  const onWorkersChange = (e: _SingleRangeChangeEvent) => {
+    const _workers = parseInt(e.currentTarget.value, 10);
+
+    setWorkers(_workers);
+    configService.params.logstash.workers = _workers;
   }
 
   return(
@@ -31,11 +38,12 @@ export function ConfigurationLogstash({ configService }: ConfigurationLogstashPr
             id={'logstashWorkers'}
             min={1}
             max={12}
-            value={configService.params.logstash.workers}
-            onChange={onJvmSizeChange}
+            value={workers}
+            onChange={onWorkersChange}
             showLabels
             showValue
             aria-label="Define the workers"
+            disabled={status === 'on'}
           />
         </>
       </EuiFormRow>

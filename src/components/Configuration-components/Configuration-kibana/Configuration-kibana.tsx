@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   EuiFieldNumber,
   EuiForm,
@@ -8,32 +8,38 @@ import {
 import './Configuration-kibana.scss';
 import { ConfigService } from '../../../services/ConfigService';
 import { _SingleRangeChangeEvent } from '@elastic/eui/src/components/form/range/types';
+import { Status } from '../../../types';
 
 interface ConfigurationKibanaProps {
   configService: ConfigService
+  status: Status
 }
 
-export function ConfigurationKibana({ configService }: ConfigurationKibanaProps) {
-  const onExpirationTimeChange = (e: _SingleRangeChangeEvent) => {
-    configService.params.kibana.expirationTime = parseInt(e.currentTarget.value, 10);
+export function ConfigurationKibana({ configService, status }: ConfigurationKibanaProps) {
+  const [port, setPort] = useState<number>(configService.params.kibana.port);
+
+  const onPortChange = (e: _SingleRangeChangeEvent) => {
+    const _port = parseInt(e.currentTarget.value, 10);
+    
+    setPort(_port);
+    configService.params.kibana.port = _port;
   }
 
   return(
     <EuiForm className="Forms">
       <EuiFormRow
-        label={'Logstash workers'}
+        label={'Port'}
         labelAppend={
           <EuiText size="xs" />
         }
       >
         <>
           <EuiFieldNumber
-            id={'expiracyTime'}
-            min={1}
-            max={12}
-            value={configService.params.kibana.expirationTime}
-            onChange={onExpirationTimeChange}
+            id={'port'}
+            value={configService.params.kibana.port}
+            onChange={onPortChange}
             aria-label="Define expiracy time"
+            disabled={status === 'on'}
           />
         </>
       </EuiFormRow>
