@@ -11,17 +11,17 @@ $size: 180px;
   width: $size;
   height: $size;
   position: relative;
-  
+
   .Button {
     border-radius: 9999px;
-    padding: 12px; 
+    padding: 12px;
     height: $size - 10px;
     width: $size - 10px;
-  
+
     background-color: #FFF;
     box-shadow: 2px 2px 5px #69707d;
-  
-    display: flex; 
+
+    display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1;
@@ -30,35 +30,47 @@ $size: 180px;
   .Button:hover {
     box-shadow: 1px 1px 5px #69707d;
   }
-  
-  .Hawk-picture {
+
+  .Elk-picture {
     height: 100%;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid $euiColorLightShade;
+    border-radius: 9999px;
   }
-  
+
+  .Elk-picture-loader {
+    svg {
+      width: 100%;
+      height: 100%;
+
+    }
+  }
+
   .Loader {
     position: absolute;
     top: 0;
     left: 0;
-  
+
     width: $size / 2;
     height: $size;
     border-top-left-radius: $size * 2;
     border-bottom-left-radius: $size * 2;
     background-image: linear-gradient(0deg, white, $euiColorPrimary);
   }
-  
+
   .rotate {
     animation: 1s linear infinite rotate;
     transform-origin: right;
   }
-  
+
   @keyframes rotate {
     from {
       transform: rotate(0deg);
     }
+
     to {
       transform: rotate(360deg);
     }
   }
 }
-

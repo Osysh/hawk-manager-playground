@@ -1,62 +1,60 @@
-import React from 'react';
-import {
-  EuiButton,
-  EuiHealth,
-  EuiText,
-} from '@elastic/eui';
-import './Main.scss';
+import React from "react";
+import { EuiButton, EuiHealth, EuiText } from "@elastic/eui";
+import "./Main.scss";
+import pkg from "../../../package.json";
 
-import { HawkButton } from '../Hawk-button/Hawk-button';
-import { ConfigService } from '../../services/ConfigService';
-import { Status } from '../../types';
-import { EngineService } from '../../services';
+import { ElkButton } from "../Elk-button/Elk-button";
+import { ConfigService } from "../../services/ConfigService";
+import { Status } from "../../types";
+import { EngineService } from "../../services";
 
 interface MainProps {
   status: Status;
   engineService: EngineService;
 }
 
-export function Main({
-  status,
-  engineService
-}: MainProps) {
+export function Main({ status, engineService }: MainProps) {
   const launch = () => {
-    if (status === 'on') {
+    if (status === "on") {
       engineService.off();
-    } else if (status === 'off') {
+    } else if (status === "off") {
       engineService.on();
     }
-  }
+  };
 
-  return(
+  return (
     <div className="Main-container Main-page">
       <div className="Connection-header">
         <EuiHealth color={ConfigService.prompt[status].color}>
           {ConfigService.prompt[status].text}
         </EuiHealth>
-        <EuiText size="s">v3.0.1</EuiText>
+        <EuiText size="s">v{pkg.version}</EuiText>
       </div>
 
-      <HawkButton
-        isLoading={status === 'loading'}
-        isClickDisabled={status === 'loading' || status === 'off'}
+      <ElkButton
+        isLoading={status === "loading"}
+        isClickDisabled={status === "loading" || status === "off"}
         onClick={console.log}
       />
 
       <div>
         <EuiText size="xs" textAlign="center">
-          {status === 'off' ? '' : status === 'loading' ? 'Hawk is launching, this may take a few moment' : 'Click on Hawk to open the browser'}
+          {status === "off"
+            ? ""
+            : status === "loading"
+            ? "Elk is launching, this may take a few moment"
+            : "Click on Elk to open the browser"}
         </EuiText>
       </div>
 
       <div className="Button-group">
         <EuiButton
-          isDisabled={status === 'loading'}
+          isDisabled={status === "loading"}
           aria-label="button"
           fullWidth
           onClick={launch}
         >
-          {status === 'loading' || status === 'off' ? 'Launch Hawk' : 'Stop Hawk'}
+          {status === "loading" || status === "off" ? "Launch Elk" : "Stop Elk"}
         </EuiButton>
       </div>
     </div>

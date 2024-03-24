@@ -1,3 +1,3 @@
-# Hawk Manager Playground
+# ELK Manager Playground
 
-This is a mock-up of Hawk manager project
+This is a mock-up of ELK manager project
